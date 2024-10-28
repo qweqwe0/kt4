@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Routes, Route, useLocation} from 'react-router-dom'
+import NotFoundPage from './Pages/NotFoundPage';
+import ProductPage from './Pages/ProductPage';
+import './App.css'
+import ProductAbout from './Pages/ProductAbout';
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  
+  const location = useLocation()
+  console.log(location)
+
+    return (
+          <Routes>
+              <Route path="/products" element={<ProductPage />} />
+              <Route path="/product/:id" element={<ProductAbout/>} />
+              <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+    );
 }
 
 export default App;
